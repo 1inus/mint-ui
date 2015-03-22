@@ -1,0 +1,111 @@
+.article{
+	outline:none;
+	padding:6px;
+	height:100%;
+	position:relative;
+	overflow-y:auto;
+	overflow-x:hidden;
+	box-sizing:border-box;
+	font-size:15px;
+	letter-spacing:.03em;
+	word-spacing:2px;
+	counter-reset: chapter;
+	
+	table {
+		font-family: verdana,arial,sans-serif;
+		font-size:11px;
+		color:#333333;
+		width:100%;
+		border-width: 1px;
+		border-color: #666666;
+		border-collapse: collapse;
+	}
+	th {
+		border-width: 1px;
+		padding: 6px;
+		border-style: solid;
+		border-color: #666666;
+		background-color: #dedede;
+	}
+	
+	tr{
+		
+	}
+	
+	td {
+		border-width: 1px;
+		padding: 4px 6px;
+		border-style: solid;
+		border-color: #666666;
+	}
+	
+    p,  blockquote.quote {
+    	line-height:1.6em;
+    }
+	
+	p,  blockquote.quote, pre,ol,ul{
+		margin-top:6px;
+	}   	
+	   	
+	/*上下标*/
+	sup,sub{
+        font-size:0.7em;
+    }
+    /*代码块样式*/
+    pre{
+        padding:8px;
+        font-size: 14px;
+		line-height: 1.2em;
+		word-break: break-word;
+    }
+    
+    /*引用块样式*/
+    blockquote.quote{
+        background:#E9FAFF;
+        border:1px solid #A6EEFF;
+        padding:20px 30px;
+        position:relative;
+        margin:5px 0;
+        
+        &:before, &:after{
+            display:inline-block;
+            width:25px;
+            height:20px;
+            content:"";
+            position:absolute;
+            background-image: url("blockquote.png");
+        }
+        
+        &:before{
+            left:2px;
+            top:2px;
+        }
+        
+        &:after{
+            background-position:-30px 0;
+            right:2px;
+            bottom:2px;
+        }
+    }
+    
+    img{
+        max-width:600px;
+    }
+    
+    h2{
+		counter-reset: section;
+    
+	    &:before{
+			counter-increment: chapter;
+			content: counter(chapter) ". ";
+	    }
+    }
+    
+    h3:before{
+    	counter-increment: section;
+		content: counter(chapter) "." counter(section) "\3000";
+    }
+    h4:boefore{
+    	
+    }
+}

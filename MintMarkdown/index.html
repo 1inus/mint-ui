@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>mint</title>
+<meta charset="utf-8"/>
+<meta name="Keywords" content="创客,灵感,价值,mint-mvc,mint-ui,java,javascript,html,网站开发"/>
+<meta name="Description" content="释放灵感,创造价值"/>
+<style>
+	body{
+		position:absolute;
+		top:50px;
+		left:50px;
+		right:50px;
+		bottom:20px;
+	}
+	.toolbar{
+		position:absolute;
+		z-index:1;
+		bottom:100%;
+		width:100%;
+	}
+	.editor{
+		width:100%;
+		position:absolute;
+		bottom:0;
+		top:-2px;
+	}
+</style>
+</head>
+<body>
+<div class="toolbar"></div>
+<div class="editor">##特点
+MintMarkdown是一款轻巧的富文本编辑器。工具栏和编辑区域可分开，方便与多种布局融合。采用<a href="https://github.com/chjj/marked">marked</a>将markdown语法转换成html。预览效果采用<a href="https://highlightjs.org/">highlight</a>代码块语法高亮。
+MintMarkdown非常简单，开发者友好，易于扩展 
+
+##为什么要开发这个插件
+原因主要是因为作者在用其他编辑器编写博客时，每插入一张图片就要上传一次，而且图片不小心被删除了就找不回来了，得重新上传。所以我希望能有个能管理当前博客所有图片的编辑器，我可以在博客中随时插入和删除图片，但是我找了很久都没找着。所以就自己开发了一个</div>
+<script src="../lib/jquery-1.8.3.min.js"></script>
+<script src="../MintDialog/MintDialog.min.js"></script>
+<script src="MintMarkdown.js"></script>
+<script>
+var tools = ["undo", "redo", "|", "insertImg", "preview", "leftRight", "rightLeft"];
+var buttonSetting = {
+		insertImg : {
+			uploadUrl : "docadmin/imgs", //上传文件的url
+			loadUrl : "docadmin/imgs",	//获取图片的url
+			deleteUrl : "docadmin/imgs/delete",
+			/*
+			 * 根据loadUrl获取到数据后交给此函数处理，请返回文件的路径和文件名对象数组
+			 * 如：[{
+			 * 		name : "img.jpg",
+			 * 		src : "http://localhost/imgs/img.jpg"
+			 * }]
+			 */
+			imgDataFilter : function(data){
+				var d = [];
+				$.each(data.data, function(i, t){
+					d.push({
+						name : t.name,
+						src : "static/doc/"+t.fileName,
+						id : t.id
+					});
+				});
+				return d;
+			}
+		}
+	};
+
+var previewOn = true;
+var editor = new MintMarkdown(".toolbar", ".editor", tools, buttonSetting, previewOn);
+var html = editor.html();
+var text = editor.text();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

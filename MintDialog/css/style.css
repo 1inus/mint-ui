@@ -1,0 +1,71 @@
+.dialog_mask {
+  top: 50%;
+  left: 0;
+  right: 0;
+  position: fixed;
+  text-align: center;
+  z-index: 100;
+  display: none;
+  font-size: 0;
+  height: 0;
+  white-space: nowrap;
+}
+.dialog_mask.modal {
+  top: 0;
+  bottom: 0;
+  height: auto;
+  background: rgba(119, 119, 119, 0.5);
+}
+.dialog_mask:after {
+  content: " ";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.dialog_mask .dialog {
+  white-space: normal;
+  font-size: 14px;
+  text-align: left;
+  min-width: 300px;
+  min-height: 80px;
+  display: inline-block;
+  background: #ffffff;
+  vertical-align: middle;
+  -moz-box-shadow: 0 0 80px #202020;
+  -webkit-box-shadow: 0 0 80px #202020;
+  box-shadow: 0 0 80px #202020;
+}
+.dialog_mask .dialog.moveable .head {
+  cursor: move;
+}
+.dialog_mask .dialog .head,
+.dialog_mask .dialog .body {
+  margin: 6px;
+}
+.dialog_mask .dialog .head {
+  padding: 3px 6px;
+  position: relative;
+  background: #15a4fa;
+}
+.dialog_mask .dialog .head .title {
+  color: #fff;
+  height: 20px;
+  line-height: 20px;
+  margin-right: 20px;
+  font-size: 1.1em;
+}
+.dialog_mask .dialog .head .close_btn {
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  right: 2px;
+  margin-top: -10px;
+  position: absolute;
+  display: inline-block;
+  float: right;
+  background: url("close_btn.png");
+}
+.dialog_mask .dialog .head .close_btn:hover {
+  cursor: pointer;
+  background-position: -20px 0;
+}

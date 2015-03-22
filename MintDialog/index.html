@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>对话框demo</title>
+	</head>
+	<body>
+		<button onclick="dia1.show();">模态弹窗</button>
+		<button onclick="dia2.show();">非模态弹窗</button>
+	</body>
+	<script src="../lib/jquery-1.8.3.min.js"></script>
+	<script src="MintDialog.js"></script>
+	<script>
+		var dia1 = new MintDialog({
+			title : "模态弹窗",
+			body : "hello friends"
+		});
+		
+		var dia2 = new MintDialog({
+			title : "非模态弹窗",
+			body : "hello friends",
+			modal:false,
+			moveable:true
+		});
+	</script>
+</html>

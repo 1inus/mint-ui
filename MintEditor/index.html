@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel=""/>
+		<style>
+			body{
+				position:absolute;
+				left:20px;
+				right:20px;
+				bottom:20px;
+				top:70px;
+			}
+		
+			#toolbar{
+				border:1px solid #ccc;
+				position:absolute;
+				bottom:100%;
+				left:0;
+				right:0;
+			}
+		
+			#editorBody{
+				position:absolute;
+				z-index:1;
+				top:4px;
+				bottom:0;
+				left:0;
+				right:0;
+				border:1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+<div id="toolbar"></div>
+<div id="editorBody"><h2>特点</h2>
+<p>MintEditor是一款轻巧的富文本编辑器。工具栏和编辑区域可分开，方便与多种布局融合。开发者友好，易于扩展</p>
+<h2>为什么要开发这个插件</h2>
+<p>原因主要是因为作者在用其他编辑器编写博客时，每插入一张图片就要上传一次，而且图片不小心被删除了就找不回来了，得重新上传。所以我希望能有个能管理当前博客所有图片的编辑器，我可以在博客中随时插入和删除图片，但是我找了很久都没找着。偶然间，发现开发个简单的编辑器也并不难，所以就自己开发了一个。</p>
+</div>
+	</body>
+	<script src="../lib/jquery-1.8.3.min.js"></script>
+	<script src="../MintDialog/MintDialog.min.js"></script>
+	<script src="MintEditor.js"></script>
+	<script>
+var tools = [
+		"undo", "redo", "removeFormat", "|", 
+		"bold", "italic", "underline", "strikeThrough", "|",
+		"justifyLeft", "justifyCenter", "justifyRight", "justifyFull", "|", 
+		"indent", "outdent", "|",
+		"insertUnorderedList", "insertOrderedList", "quote", "cancelQuote", "lang", "superscript", "subscript", "createLink", "unlink", "|", 
+		"head", "fontSize", "fontName", "foreColor", "|",
+		"insertImg"
+	];
+
+var toolSetting = {
+		insertImg : {
+			uploadUrl : "docadmin/imgs", //上传文件的url
+			loadUrl : "docadmin/imgs",	//获取图片的url
+			deleteUrl : "docadmin/imgs/delete",//删除图片的url
+			
+			/*
+			 * 根据loadUrl获取到数据后交给此回调函数处理，
+			 * 请返回包含文件的路径和文件名对象数组
+			 * 如：[{
+			 * 		name : "img.jpg",
+			 * 		src : "http://localhost/imgs/img.jpg"
+			 * }]
+			 */
+			imgDataFilter : function(data){
+				var d = [];
+				$.each(data.data, function(i, t){
+					d.push({
+						name : t.name,
+						src : "static/doc/"+t.fileName,
+						id : t.id
+					});
+				});
+				return d;
+			}
+		}
+	}
+
+var editor = new MintEditor("#toolbar", "#editorBody", tools, toolSetting);
+
+		console.log(editor.html());
+	</script>
+</html>

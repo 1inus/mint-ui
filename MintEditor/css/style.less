@@ -1,0 +1,404 @@
+.mint_editor_toolbar{
+    padding:1px;
+    font-size:0;
+    .tool, .split{
+        height:20px;
+        display:inline-block;
+        vertical-align: middle;
+    }
+    
+    .split{
+        border-color: #ccc;
+        border-left:1px solid #ccc;
+        border-right:none;
+        margin:1px 2px;
+        width:0;
+    }
+    .tool{
+    	-webkit-user-select:none;
+    	-moz-user-select:none;
+    	user-select:none;
+        font-size:14px;
+        position:relative;
+        min-width:22px;
+        height:22px;
+        margin:1px;
+        cursor:default;
+        border:1px #fff solid;
+        box-sizing:border-box;
+        
+        &:hover{
+        	border-color:#ccc;
+        }
+        
+        &.active{
+        	border-color:#ccc;
+        	background-color:#f4ba2f!important;
+        }
+        
+        /*字号选值*/
+        .drop_down_box{
+            border:#ccc 1px solid;
+            position:absolute;
+            background:#fff;
+            list-style: none;
+            box-shadow: 2px 2px 2px #333;
+            box-sizing: border-box;
+            padding:0 1px;
+            display:none;
+            outline:none;
+            z-index:1;
+            top:22px;
+            left:-1px;
+            
+            li{
+                background:#fff;
+                cursor:pointer;
+                
+                padding:2px 4px;
+           		margin:1px;
+                white-space: nowrap;
+                
+                &:hover{
+                    background-color:#f1fedd;
+                    border-color:#ccc;
+                }
+                
+                &:active{
+                    background-color:#5ebb0b;
+                }
+            }            
+        }
+        
+        &:hover{
+            background-color:#f1fedd;
+        }
+        
+        &:active{
+            background-color:#5ebb0b;
+        }
+    }
+}
+
+/*工具栏工具项的样式*/
+.mint_editor_toolbar{
+	font-family:"微软雅黑";
+    ul{
+        padding:0;
+        list-style: none;
+    }
+    
+    .tool{
+        background:url(icons.png) -2px 0;
+        
+        &.undo{background-position:-161px 0;}
+        &.redo{background-position:-101px 0;}
+        &.italic{background-position:-61px 0;}
+        &.removeFormat{background-position:-581px 0;}
+        &.underline{background-position:-141px 0;}
+        &.strikeThrough{background-position:-121px 0;}
+        &.justifyLeft{background-position:-461px 0;}
+        &.justifyCenter{background-position:-421px 0;}
+        &.justifyRight{background-position:-481px 0;}
+        &.justifyFull{background-position:-441px 0;}
+        &.indent{background-position:-401px 0;}
+        &.outdent{background-position:-401px 0;}
+        &.insertUnorderedList{background-position:-21px 0;}
+        &.insertOrderedList{background-position:-81px 0;}
+        &.subscript{background-position: -601px 0;}
+        &.superscript{background-position: -621px 0;}
+        &.quote{background-position: -221px 0;}
+        &.lang{background-position:-441px -41px;}
+        &.insertImg{background-position: -381px 0;}
+        &.unlink{background-position:-641px 0;}
+        &.pasteMode{background-position:-361px -20px;}
+		&.createLink{
+			background-position:-501px 0;
+			
+			.drop_down_box{
+				.link_argument{
+					padding:4px;
+					white-space:nowrap;
+					
+					input{
+						outline:none;
+						margin:2px 4px;
+					}
+				}
+				
+				button{
+					display:inline-block;
+					padding:2px 4px;
+					border:1px solid #ccc;
+					margin:4px;
+					outline:none;
+					
+					&:hover{
+						background:#f1fedd;
+					}
+					
+					&:action{
+						background:red;
+					}
+				}
+			}
+			
+		}
+		
+        &.fontSize, &.head,  &.foreColor, &.fontName{
+			background:none;
+            
+            .tool{
+                display:inline-block;
+                background:none;
+                border:1px solid #ccc;
+                padding:0 2px;
+                margin:0;
+                vertical-align:top;
+                line-height:18px;
+                height:100%;
+            }
+        }
+        
+        &.head li *{
+            padding:0 6px;
+            margin:0;
+        }
+        
+        
+        &.foreColor .font_color_values {
+            font-size:0;
+            width:94px;
+            
+            li{
+                width:16px;
+                height:16px;
+                display:inline-block;
+                box-sizing:border-box;
+            }
+        }
+        
+        &.color{
+            .font_color_values{
+                
+            }
+        }
+    }
+}
+
+.mint_editor_body_wraper{
+	height:100%;
+	
+	.mint_editor_body{
+		outline:none;
+		padding:6px;
+		height:100%;
+		position:relative;
+		overflow-y:auto;
+		overflow-x:hidden;
+		box-sizing:border-box;
+	    p,  blockquote.quote {
+	    	line-height:1.4em;
+	    	letter-spacing:1px;
+	    }
+	    
+		/*上下标*/
+		sup,sub{
+	        font-size:0.7em;
+	    }
+	    /*代码块样式*/
+	    pre{
+	    	background:#f0f0f0;
+	        padding:8px;
+			border: 1px #ccc dashed;
+	    }
+	    
+	    /*引用块样式*/
+	    blockquote.quote{
+	        background:#E9FAFF;
+	        border:1px solid #A6EEFF;
+	        padding:20px 30px;
+	        position:relative;
+	        margin:5px 0;
+	        
+	        &:before, &:after{
+	            display:inline-block;
+	            width:25px;
+	            height:20px;
+	            content:"";
+	            position:absolute;
+	            background-image: url("blockquote.png");
+	        }
+	        
+	        &:before{
+	            left:2px;
+	            top:2px;
+	        }
+	        
+	        &:after{
+	            background-position:-30px 0;
+	            right:2px;
+	            bottom:2px;
+	        }
+	    }
+	    
+	    img{
+	        max-width:500px;
+	    }
+	}
+}
+.upload_dialog{
+    .image_upload_area{
+        list-style: none;
+        padding:8px;
+        margin:0;
+        width:665px;
+        height:350px;
+        overflow-y:auto;
+        border:#ffcc99 2px dashed;
+        text-align:center;
+        background:#ECECEC;
+        &.drop{
+            background:#33CC33;
+        }
+        
+        .images{
+        	width:630px;
+        	text-align:left;
+        	display:inline-block;
+        	
+	        li{
+	            display:inline-block;
+	            vertical-align: middle;
+	            margin:4px;
+	            text-align: center;
+	            margin-bottom:10px;
+	            position:relative;
+	            background: #fff;
+				box-shadow: 2px 2px 3px #B8B8B8;
+	            -moz-transition: 0.1s ease-in-out;
+	            transition: 0.1s ease-in-out;
+	            border-radius:1px;
+	            
+	            &:hover{
+	            	background:#B5E3FF;
+	            }
+	            
+	            &:active{
+	            	background:#88D2FF;
+	            }
+	            
+	            &.new{
+	            	opacity:0.5;
+	            	background:#FF9E9E;
+	            }
+	            
+	            &.new:hover{
+	            	opacity:9;
+	            	background:#FF9E9E;
+	            }
+	            
+	            &:hover .delete{
+	            	transform: scale(1);
+	            }
+	            
+	            @color1:#ccc;
+	            @color2:red;
+	            .delete{
+	            	height:18px;
+	            	width:18px;
+	            	border:1px solid @color1;
+	            	color:@color1;
+	            	top:-7px;
+	            	right:-7px;
+	            	position:absolute;
+	            	background:#fff;
+	            	cursor:pointer;
+	            	-moz-transition: 0.3s ease-in-out;
+	            	transition: 0.3s ease-in-out;
+					transform: scale(0);
+					border-radius:50%;
+					line-height: 18px;
+					font-size: 18px;
+														
+	            	&:hover{
+	            		box-shadow:0 0 3px red;
+	            		text-shadow:0 0 3px red;
+	            		border-color:@color2;
+	            		color:@color2;
+	            	}
+	            }
+	            
+	            @size:110px;
+	            .img{
+	            	box-sizing:content-box;
+	                font-size:0;
+	                width:@size;
+	                height: @size;
+	                margin:4px;
+	                line-height: @size;
+	                
+	                img {
+	                	cursor:pointer;
+	                    vertical-align: middle;
+	                    max-width: @size;
+	                    max-height: @size;
+	                }
+	            }
+	            
+	            .img_name{
+	                padding:5px 6px;
+	                text-align:center;
+	                width: 100px;
+	                cursor: default;
+	                white-space: nowrap;
+	                overflow: hidden;
+	                line-height:14px;
+	                font-size:12px;
+	                font-family: "";
+	                text-overflow: ellipsis;
+	            }
+	        }
+        }
+    }
+    
+    .upload_tool{
+        padding:10px 0;
+        
+        .upload_process, button{
+        	vertical-align:middle;
+        }
+        
+        .upload_process{
+        	display: inline-block;
+			width: 470px;
+			height: 22px;
+			line-height: 20px;
+			border: 1px solid #ccc;
+			margin-right:4px;
+			padding: 2px;
+        	
+        	.process_bar{
+        		height: 100%;
+				width: 0;
+				background: #CAEFBA;
+				white-space:nowrap;
+				
+				.file_info{
+					padding:0 4px;
+				}
+        	}
+        }
+        .do_upload{
+            margin:5px;
+        }
+        
+        input{
+        	width:0;
+        	height:0;
+        	visibility:hidden;
+        	position:absolute;
+        	z-index:-1;
+        }
+    }
+}

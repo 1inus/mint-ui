@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>表单验证插件</title>
+	<meta charset=UTF-8>
+	<style>
+		html{
+			background:#8B817D;
+		}
+		form{
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-left:-225px;
+			margin-top:-206px;
+			width:480px;
+			background:#fff;
+			box-shadow: 0 0 80px rgba(214, 214, 214, 0.6);
+		}
+		*{outline:none;font-family: "微软雅黑";color:#7777777;}
+			form dt{width:80px;float:left;line-height:30px;text-align:right;}
+			form dt,form dd{padding:5px 3px;}
+			input{border:1px solid #9EC3FF;padding:4px 6px;font-size:16px;width:200px;}
+			input:focus{border-color:#4D90FE!important;box-shadow: 0 0 10px rgba(74, 168, 255, 0.5);}
+			input:hover{border-color:#4D90FE;}
+			button{width:200px;padding:4px 6px;font-size:18px;box-sizing:content-box;color:#fff;border:none;background:#93BEFF;}
+		</style>
+    </head>
+	<body>
+		<form id="registerForm">
+			<dl>
+				<dt>昵称：</dt><dd><input type="text" name="nickname"/></dd>
+				<dt>邮件：</dt><dd><input type="text" name="email"/></dd>
+				<dt>密码：</dt><dd><input type="password" name="pwd"/></dd>
+				<dt>确认：</dt><dd><input type="password" name="pwd1"/></dd>
+				<dt></dt><dd><button type="button" id="register">注&emsp;册</button></dd>
+			</dl>
+		</form>
+	</body>
+<script src="../lib/jquery-1.8.3.min.js"></script>
+<script src="MintValidator.min.js"></script>
+	<script>
+		/*先定义验证规则*/
+		var rules = {
+			"email"    	: {
+				"rule" : /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,
+				"tip" : "邮箱格式不对"
+			},
+			"eq"		: {
+				"rule" : function(val, formData){ return val == formData.pwd; },
+				"tip" : "密码不匹配"
+			},
+			"notnull" : {
+				"rule" : function(val, formData){return !(val == "")},
+				"tip" : "不要为空"
+			}
+		};
+		
+		/*配置所有需要验证的表单域的验证参数*/
+		var inputs = [{ 
+				name 		: "nickname", 	//表单域的name属性值
+				rules 		: ['notnull'], 	//采用什么规则验证此输入框，可配置多个规则
+				focusMsg 	: '不能为空',	//当表单域获得焦点时的提示信息
+				rightMsg	: '昵称可用(^_^)', //当表单域验证成功时的提示信息
+				errorMsg	: "请输入昵称",	//当表单验证不成功时的提示信息
+				
+				/*定义ajax验证参数，结合后台验证昵称*/
+				ajax 		: {
+					url 	: "account/confirm_nickname",
+					dataType:"json",
+					filter 	: function(data){
+						if(data.result){
+							data.msg = "昵称可以注册(^_^)";
+						} else if(d.data > 0){
+							data.msg = "此昵称已被占用(^_^)||";
+						}
+						return data;
+					}
+				}
+			},{ 
+				name 		: "pwd",	
+				rules 		: ['notnull'],
+				focusMsg 	: '登陆密码',
+				rightMsg 	: "密码有效(^_^)"
+			},{ 
+				name 		: "pwd1",	
+				rules 		: ['eq'],		
+				focusMsg 	: '确认密码',	
+				rightMsg 	: "密码匹配(^_^)",
+			},{ 
+				name 		: "email",
+				rules 		: ["email"],	
+				focusMsg 	: '常用邮箱',
+				rightMsg 	: "邮箱有效(^_^)"
+			}
+		];
+		
+		var setting = {
+				inputs				: inputs,
+				submitButton 		: "#register",
+				rules 				: rules,
+				showTipsAfterInit 	: true,
+				onSubmit 			: function(result, button, form){
+					if(result){
+						//如果表单的验证结果为true,则可以手动通过ajax提交表单
+					}
+				}
+			}
+		
+		/*最终验证表单*/
+		$("#registerForm").validateForm(setting);
+	</script>
+</html>

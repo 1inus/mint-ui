@@ -1,0 +1,122 @@
+.select_tool {
+  position: absolute;
+  -moz-user-select: none;
+}
+.select_tool i {
+  display: block;
+}
+.select_tool .cover,
+.select_tool .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.select_tool .cover {
+  border-color: #000;
+  border-style: solid;
+  border-width: 0;
+}
+.select_tool .mask {
+  background: #FFF;
+  cursor: crosshair;
+}
+.select_tool .pane {
+  position: absolute;
+  cursor: move;
+  display: none;
+}
+.select_tool .pane.no_resize {
+  cursor: crosshair;
+}
+.select_tool .pane.no_resize .border,
+.select_tool .pane.no_resize .resize {
+  display: none;
+}
+.select_tool .border {
+  position: absolute;
+  opacity: 0;
+  background: #000;
+  filter: alpha(opacity=0);
+}
+.select_tool .border0,
+.select_tool .border2 {
+  cursor: n-resize;
+  width: 100%;
+  height: 12px;
+}
+.select_tool .border1,
+.select_tool .border3 {
+  top: 0;
+  cursor: e-resize;
+  height: 100%;
+  width: 12px;
+}
+.select_tool .border0 {
+  top: -6px;
+}
+.select_tool .border1 {
+  right: -6px;
+}
+.select_tool .border2 {
+  bottom: -6px;
+}
+.select_tool .border3 {
+  left: -6px;
+}
+.select_tool .resize {
+  box-sizing: content-box;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid #D4D4D4;
+  opacity: 0.5;
+  z-index: 10;
+  background: #4444FF;
+}
+.select_tool .resize7,
+.select_tool .resize0,
+.select_tool .resize1 {
+  top: -7px;
+}
+.select_tool .resize1,
+.select_tool .resize2,
+.select_tool .resize3 {
+  right: -7px;
+}
+.select_tool .resize3,
+.select_tool .resize4,
+.select_tool .resize5 {
+  bottom: -7px;
+}
+.select_tool .resize5,
+.select_tool .resize6,
+.select_tool .resize7 {
+  left: -7px;
+}
+.select_tool .resize0,
+.select_tool .resize4 {
+  left: 50%;
+  margin-left: -7px;
+  cursor: n-resize !important;
+}
+.select_tool .resize2,
+.select_tool .resize6 {
+  top: 50%;
+  margin-top: -7px;
+  cursor: e-resize !important;
+}
+.select_tool .resize1,
+.select_tool .resize5 {
+  cursor: ne-resize;
+}
+.select_tool .resize3,
+.select_tool .resize7 {
+  cursor: nw-resize;
+}
+.mint_imgselect_preview {
+  overflow: hidden;
+}

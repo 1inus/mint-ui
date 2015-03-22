@@ -1,0 +1,55 @@
+.status_error {
+  border-color: red;
+  box-shadow: 0 0 10px rgba(255, 103, 103, 0.5);
+}
+.mint_validator.input_tip {
+  box-sizing: content-box !important;
+  font-size: 17px;
+  height: 26px;
+  line-height: 26px;
+  padding: 2px 4px;
+  padding-left: 32px;
+  white-space: nowrap;
+  z-index: 100;
+  position: absolute;
+  display: none;
+}
+.mint_validator.input_tip:before {
+  position: absolute;
+  left: 4px;
+  display: inline-block;
+  content: " ";
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+}
+.mint_validator.focus_tip:before,
+.mint_validator.right_tip:before,
+.mint_validator.error_tip:before {
+  background-image: url('icons.png');
+}
+.mint_validator.focus_tip {
+  color: #5a4822;
+  border-color: #feb930;
+}
+.mint_validator.right_tip {
+  color: #4BB33A;
+  border-color: #4BB33A;
+}
+.mint_validator.right_tip:before {
+  background-position: 0 -24px;
+}
+.mint_validator.error_tip {
+  color: #E69946;
+  border-color: #E69946;
+}
+.mint_validator.error_tip:before {
+  background-position: 0 -48px;
+}
+.mint_validator.ajax_check_tip {
+  color: #FFDA67;
+  border-color: #FFDA67;
+}
+.mint_validator.ajax_check_tip:before {
+  background: #008000 url('loading.gif') no-repeat center center;
+}

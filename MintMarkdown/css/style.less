@@ -1,0 +1,293 @@
+.mint_markdown_toolbar{
+	padding:0;
+    font-size:0;
+    border:2px solid #ddd;
+    
+    @toolSize : 20px;
+    
+    .tool, .split{
+        height:@toolSize;
+        display:inline-block;
+        vertical-align: middle;
+        margin:0 3px;
+    }
+    
+    .split{
+        border:2px solid #ddd;
+        border-right:none;
+        width:0;
+    }
+    .tool{
+    	-webkit-user-select:none;
+    	-moz-user-select:none;
+    	user-select:none;
+        width:@toolSize;
+        height:@toolSize;
+        cursor:default;
+        //border:1px green solid;
+        box-sizing:border-box;
+        background-image:url("editor_icons.svg");
+        
+        &.undo{
+        	background-position-x:-200px;
+        }
+        
+        &.redo{
+        	background-position:-220px 0;
+        }
+        
+        &.insertImg{
+        	background-position:-100px 0;
+        }
+        
+        &.preview{
+        	background-position:20px 0;
+        }
+        
+        &.leftRight, &.rightLeft{
+        	display:none;
+        }
+        
+        &.leftRight{
+        	background-position:40px 0;
+        }
+        
+        &.rightLeft{
+        	background-position:60px 0;
+        }
+        
+        &:hover{
+        	border-color:#ccc;
+        }
+        
+        &.active{
+        	background-position-y:-20px;
+        }
+        
+        &.disable{
+        	background-position-y:-40px;
+        }
+	}
+	
+	&.preview_on{
+		.leftRight,.rightLeft{
+			display:inline-block;
+		}
+	}
+	
+}
+
+.mint_markdown_body{
+	min-height:50px;
+	height:100%;
+	
+	.input_wraper, .preview_wraper{
+		height:100%;
+		width:100%;
+		position:relative;
+	}
+	
+	.preview_wraper{
+		display:none;
+	}
+	
+	.mint_markdown_input{
+		font-size:16px;
+		line-height:1.6em;
+	}
+	
+	.mint_markdown_input, .mint_markdown_preview{
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		margin:0;
+		width:100%;
+		height:100%;
+		padding:7px;
+		resize:none;
+		outline:none;
+		word-break:break-all;
+		overflow-y:auto;
+		border:2px solid #ddd;
+	}
+	
+	&.preview_on{
+		.input_wraper, .preview_wraper{
+			width:50%;
+		}
+		
+		.input_wraper{
+			float:left;
+		}
+		
+		.preview_wraper{
+			float:right;
+			display:block;
+		}
+		
+		&.left_right{
+			.input_wraper{
+				float:right;
+			}
+			
+			.preview_wraper{
+				float:left;
+			}
+		}
+	}
+}
+
+.upload_dialog{
+    .image_upload_area{
+        list-style: none;
+        padding:8px;
+        margin:0;
+        width:665px;
+        height:350px;
+        overflow-y:auto;
+        border:#ffcc99 2px dashed;
+        text-align:center;
+        background:#ECECEC;
+        &.drop{
+            background:#33CC33;
+        }
+        
+        .images{
+        	width:630px;
+        	text-align:left;
+        	display:inline-block;
+        	
+	        li{
+	            display:inline-block;
+	            vertical-align: middle;
+	            margin:4px;
+	            text-align: center;
+	            margin-bottom:10px;
+	            position:relative;
+	            background: #fff;
+				box-shadow: 2px 2px 3px #B8B8B8;
+	            -moz-transition: 0.1s ease-in-out;
+	            transition: 0.1s ease-in-out;
+	            border-radius:1px;
+	            
+	            &:hover{
+	            	background:#B5E3FF;
+	            }
+	            
+	            &:active{
+	            	background:#88D2FF;
+	            }
+	            
+	            &.new{
+	            	opacity:0.5;
+	            	background:#FF9E9E;
+	            }
+	            
+	            &.new:hover{
+	            	opacity:9;
+	            	background:#FF9E9E;
+	            }
+	            
+	            &:hover .delete{
+	            	transform: scale(1);
+	            }
+	            
+	            @color1:#ccc;
+	            @color2:red;
+	            .delete{
+	            	height:18px;
+	            	width:18px;
+	            	border:1px solid @color1;
+	            	color:@color1;
+	            	top:-7px;
+	            	right:-7px;
+	            	position:absolute;
+	            	background:#fff;
+	            	cursor:pointer;
+	            	-moz-transition: 0.3s ease-in-out;
+	            	transition: 0.3s ease-in-out;
+					transform: scale(0);
+					vertical-align:middle;
+					line-height: 18px;
+					font-size: 18px;
+														
+	            	&:hover{
+	            		box-shadow:0 0 3px red;
+	            		text-shadow:0 0 3px red;
+	            		border-color:@color2;
+	            		color:@color2;
+	            	}
+	            }
+	            
+	            @size:110px;
+	            .img{
+	            	box-sizing:content-box;
+	                font-size:0;
+	                width:@size;
+	                height: @size;
+	                margin:4px;
+	                line-height: @size;
+	                
+	                img {
+	                	cursor:pointer;
+	                    vertical-align: middle;
+	                    max-width: @size;
+	                    max-height: @size;
+	                }
+	            }
+	            
+	            .img_name{
+	                padding:5px 6px;
+	                text-align:center;
+	                width: 100px;
+	                cursor: default;
+	                white-space: nowrap;
+	                overflow: hidden;
+	                line-height:14px;
+	                font-size:12px;
+	                font-family: "";
+	                text-overflow: ellipsis;
+	            }
+	        }
+        }
+    }
+    
+    .upload_tool{
+        padding:10px 0;
+        
+        .upload_process, button{
+        	vertical-align:middle;
+        }
+        
+        .upload_process{
+        	display: inline-block;
+			width: 470px;
+			height: 22px;
+			line-height: 20px;
+			border: 1px solid #ccc;
+			margin-right:4px;
+			padding: 2px;
+        	
+        	.process_bar{
+        		height: 100%;
+				width: 0;
+				background: #CAEFBA;
+				white-space:nowrap;
+				
+				.file_info{
+					padding:0 4px;
+				}
+        	}
+        }
+        .do_upload{
+            margin:5px;
+        }
+        
+        input{
+        	width:0;
+        	height:0;
+        	visibility:hidden;
+        	position:absolute;
+        	z-index:-1;
+        }
+    }
+}

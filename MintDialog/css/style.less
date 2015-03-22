@@ -1,0 +1,79 @@
+.dialog_mask{
+	top:50%;
+    left:0;
+    right:0;
+    position:fixed;
+    text-align:center;
+    z-index:100;
+    display:none;
+    font-size:0;
+    height:0;
+    white-space:nowrap;
+    
+    &.modal{
+    	top:0;
+	    bottom:0;
+	    height:auto;
+	    background:rgba(119, 119, 119, 0.5);
+    }
+    
+    &:after{
+        content:" ";
+        height:100%;
+        display:inline-block;
+        vertical-align:middle;
+    }
+    
+    .dialog{
+        white-space:normal;
+        font-size:14px;
+        text-align:left;
+        min-width:300px;
+        min-height:80px;
+        display:inline-block;
+        background:#ffffff;
+        vertical-align: middle;
+        -moz-box-shadow: 0 0 80px #202020;
+        -webkit-box-shadow: 0 0 80px #202020;
+        box-shadow: 0 0 80px #202020;
+        
+        &.moveable .head{
+        	cursor:move;
+        }
+        
+        .head, .body{
+            margin:6px;
+        }
+        
+        .head{
+            padding:3px 6px;
+            position:relative;
+            background:#15a4fa;
+            
+            .title{
+                color:#fff;
+                height:20px;
+                line-height:20px;
+                margin-right:20px;
+                font-size:1.1em;
+            }
+            
+            .close_btn{
+                width:20px;
+                height:20px;
+                top:50%;
+                right:2px;
+                margin-top:-10px;
+                position:absolute;
+                display:inline-block;
+                float:right;
+                background:url("close_btn.png");
+                
+                &:hover{
+                    cursor:pointer;
+                    background-position:-20px 0;
+                }
+            }
+        }
+    }
+}
