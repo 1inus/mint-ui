@@ -10,7 +10,7 @@ a suite of jquery web plugin.include imgcut,dialog, form validator, markdownedit
 ![rich text editor](http://mint-ui.wemakers.net/static/doc/2d7e9ba2e18149a6910463671a4e1315.png)
 ##markdown editor
 ![markdown editor](http://mint-ui.wemakers.net/static/doc/eb08196e6fac4b49acd586c9be4bdd01.png)
-#site & doc & live demo
+#site & doc & usage & live demo
 [mint-ui](http://mint-ui.wemakers.net/)
 #blog
 [makerblog](http://www.wemakers.net/home/blog?cate=1002)
