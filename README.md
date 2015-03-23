@@ -3,7 +3,7 @@ a suite of jquery web plugin.include imgcut,dialog, form validator, markdownedit
 ##dialog
 ![jquery dialog](http://mint-ui.wemakers.net/imgs/dialog.png)
 ##imgcut
-![jquery img](cuthttp://mint-ui.wemakers.net/imgs/imgselect.png)
+![jquery imgcut](http://mint-ui.wemakers.net/imgs/imgselect.png)
 ##form validator
 ![jquery validator](http://mint-ui.wemakers.net/static/doc/d24486666fe24ee8a3f2ef54a0f95e3d.png)
 ##rich text editor
