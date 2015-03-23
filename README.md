@@ -241,6 +241,7 @@ a suite of jquery web plugin.include imgcut,dialog, form validator, markdownedit
 		}
 	var editor = new MintEditor("#toolbar", "#editorBody", tools, toolSetting);
 	console.log(editor.html());
+	console.log(editor.getCatalogue());
 </script>
 ```
 ##markdown editor
@@ -296,9 +297,11 @@ MintMarkdown非常简单，开发者友好，易于扩展
 	
 	var previewOn = true;
 	var editor = new MintMarkdown(".toolbar", ".editor", tools, buttonSetting, previewOn);
-	var html = editor.html();
+	
 	editor.text("new content");
+	var html = editor.html();
 	var text = editor.text();
+	var catalogue = editor.getCatalogue();
 </script>
 ```
 #site & doc & usage & live demo
