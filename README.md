@@ -1,3 +1,7 @@
+#site & doc & usage & live demo
+[mint-ui](http://mint-ui.wemakers.net/)
+#blog
+[makerblog](http://www.wemakers.net/home/blog?cate=1002)
 # mint-ui
 a suite of jquery web plugin.include imgcut,dialog, form validator, markdowneditor, rich text editor.
 ##dialog
@@ -304,7 +308,3 @@ MintMarkdown非常简单，开发者友好，易于扩展
 	var catalogue = editor.getCatalogue();
 </script>
 ```
-#site & doc & usage & live demo
-[mint-ui](http://mint-ui.wemakers.net/)
-#blog
-[makerblog](http://www.wemakers.net/home/blog?cate=1002)
